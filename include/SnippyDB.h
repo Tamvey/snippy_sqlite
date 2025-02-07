@@ -14,6 +14,12 @@ extern "C" {
 
 enum Order { Rand, SeqFromStart };
 
+struct Operands {
+  uint64_t *const Data;
+  unsigned long long Num;
+  unsigned long long Size;
+};
+
 struct RVDBConfig;
 typedef struct RVDBConfig RVDBConfig;
 
@@ -25,10 +31,10 @@ struct RVDBConfig {
 
 typedef struct RVDBState RVDBState;
 
-typedef RVDBState* (*rvdb_initDatabase_t)(const RVDBConfig *);
+typedef RVDBState *(*rvdb_initDatabase_t)(const RVDBConfig *);
 
-typedef void (*rvdb_getOperandsByRows_t)(RVDBState *, uint64_t, enum Order,
-                                         RVDBOpcodes);
+typedef struct Operands (*rvdb_getOperandsByRows_t)(RVDBState *, uint64_t,
+                                                    enum Order, RVDBOpcodes);
 
 typedef void (*rvdb_closeDatabase_t)(RVDBState *);
 

@@ -1,3 +1,4 @@
+#include <cassert>
 #include <stdlib.h>
 
 #include "SQLiteDB.hpp"
@@ -5,15 +6,18 @@
 
 int main() {
 
-  rvdb::SQLiteDataBase db("./example.db3");
-  db.open();
+  RVDBConfig Config{"./example.db3"};
+  auto *State = rvdb_initDatabase(&Config);
 
-  db.getRows(1, Rand, RVDB_XOR);
+  auto Ops = rvdb_getOperandsByRows(State, 1, Rand, RVDB_XOR);
 
-  auto &Ops = db.Operands;
+  assert(Ops.Num == 2);
+  std::vector<uint64_t> Vals(Ops.Data, Ops.Data + Ops.Num);
 
-  for (auto Op : Ops)
+  for (auto Op : Vals)
     std::cout << "Op : " << Op << "\n";
+
+  rvdb_closeDatabase(State);
 
   return 0;
 }
