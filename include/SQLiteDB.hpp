@@ -1,7 +1,7 @@
 #pragma once
-#include "../../include/SnippyDB.h"
-#include "../../include/SQLiteCpp/Statement.h"
-#include "../../include/SQLiteCpp/Database.h"
+#include "SnippyDB.h"
+#include "SQLiteCpp/Statement.h"
+#include "SQLiteCpp/Database.h"
 #include <cstdint>
 #include <string>
 #include <iostream>
