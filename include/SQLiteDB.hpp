@@ -1,7 +1,7 @@
 #pragma once
-#include "SnippyDB.h"
-#include "SQLiteCpp/Statement.h"
-#include "SQLiteCpp/Database.h"
+#include "../../include/SnippyDB.h"
+#include "../../include/SQLiteCpp/Statement.h"
+#include "../../include/SQLiteCpp/Database.h"
 #include <cstdint>
 #include <string>
 #include <iostream>
@@ -91,9 +91,15 @@ rvdb::RVDBState* rvdb_initDatabase(const rvdb::RVDBConfig *Config) {
     return State;
 }
 
-void rvdb_getOperandsByRows(const rvdb::RVDBState *State) {
+void rvdb_getOperandsByRows(
+    const rvdb::RVDBState *State, 
+    const struct llvm::snippy::database::SnippyDB::Operands* ops,
+    uint64_t rows,
+    llvm::snippy::database::SnippyDB::Order order,
+    uint64_t opType
+) {
     if (State && State->SQLiteDB) {
-        State->SQLiteDB->getRows(State->Config.rows, State->Config.ops, State->Config.order, State->Config.opType);
+        State->SQLiteDB->getRows(rows, ops, order, opType);
         return;
     }
     std::cerr << "Invalid state or database." << std::endl;
