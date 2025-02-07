@@ -1,5 +1,5 @@
-#include "../include/DBTable.h"
-#include "hpp/SQLiteDB.hpp"
+#include "DBTable.h"
+#include "SQLiteDB.hpp"
 
 unsigned char RVDBAPI_VERSION_SYMBOL = RVDBAPI_CURRENT_INTERFACE_VERSION;
 
