@@ -1,11 +1,10 @@
 #include "DBTable.h"
-#include "SnippyDB.h"
 #include "SQLiteDB.hpp"
+#include "SnippyDB.h"
 
 unsigned char RVDBAPI_VERSION_SYMBOL = RVDBAPI_CURRENT_INTERFACE_VERSION;
 
 extern const rvdb::RVDB_FunctionPointers RVDBAPI_ENTRY_POINT_SYMBOL = {
     .initDatabase = &rvdb_initDatabase,
     .getOperandsByRows = &rvdb_getOperandsByRows,
-    .closeDatabase = &rvdb_closeDatabase
-};
+    .closeDatabase = &rvdb_closeDatabase};

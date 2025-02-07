@@ -5,16 +5,15 @@
 
 int main() {
 
+  rvdb::SQLiteDataBase db("./example.db3");
+  db.open();
 
-    rvdb::SQLiteDataBase db("./example.db3");
-    db.open();
+  db.getRows(1, Rand, RVDB_XOR);
 
-    db.getRows(1, Rand, RVDB_XOR);
+  auto &Ops = db.Operands;
 
-    auto &Ops = db.Operands;
+  for (auto Op : Ops)
+    std::cout << "Op : " << Op << "\n";
 
-    for (auto Op : Ops)
-      std::cout << "Op : " << Op << "\n";
-    
-    return 0;
+  return 0;
 }
