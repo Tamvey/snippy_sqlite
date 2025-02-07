@@ -8,7 +8,7 @@ add_executable(main src/main.cpp)
 
 target_include_directories(main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_library(SQLiteDB SHARED src/DBTable.cpp)
+add_library(SQLiteDB SHARED src/DBVTable.cpp)
 
 target_include_directories(SQLiteDB PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
